@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta charset=utf-8 />
+<title> OMS || EOD </title>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<script src="myScript.js"></script>
+</head>
+<body>
+
+<h1>ETM</h1>
+<form name= "myForm">
+<table>
+<tr>
+	<td>SOD Total: </td>
+	<td><input type="text" id="SOD_Total" onkeypress='return event.charCode >= 48 && event.charCode <= 57' /></td>
+</tr>
+<tr>
+	<td>SOD Red + Orange: </td>
+	<td><input type="text" id="SODRedOrange" onkeypress='return event.charCode >= 48 && event.charCode <= 57' /></td>
+</tr>
+
+<tr>
+	<td>Red + Orange Handled: </td>
+	<td><input type="text" id="RedOrange_Handled" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
+</tr>
+
+<tr>
+	<td>Non-Red Handled: </td>
+	<td><input type="text" id="NonRedHandled" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
+</tr>
+
+<tr>
+	<td>EOD Total: </td>
+	<td><input type="text" id="EOD_Total" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
+</tr>
+</table>
+
+<h1>Snow</h1>
+
+<table>
+<tr>
+	<td>SOD Total: </td>
+	<td><input type="text" id="S_SOD_Total" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
+</tr>
+<tr>
+	<td>SOD Red + Orange: </td>
+	<td><input type="text" id="S_SODRedOrange" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
+</tr>
+
+<tr>
+	<td>Red + Orange Handled: </td>
+	<td><input type="text" id="S_RedOrange_Handled" onkeypress='return event.charCode >= 48 && event.charCode <= 57' /></td>
+</tr>
+
+<tr>
+	<td>Non-Red Handled: </td>
+	<td><input type="text" id="S_NonRedHandled" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
+</tr>
+
+<tr>
+	<td>EOD Total: </td>
+	<td><input type="text" id="S_EOD_Total" onblur="Calculate()" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
+</tr>
+
+</table>
+
+</form>
+<p>The Result is : <br>
+</p>
+
+<table border="2" class="d" id="tableId" style="border-collapse:collapse" cellpadding="5">
+<thead>
+<tr>
+  <th bgcolor="#FFE599">Tool</th>
+  <th bgcolor="#A9D08E">SOD Total</th>
+  <th bgcolor="#FFC000">SOD Red + Orange</th>
+  <th bgcolor="#FFC000">Red  + Orange Handled</th>
+  <th bgcolor="#FFC000">EOD Red + Orange</th>
+  <th bgcolor="#BDD7EE">SOD Non Red</th>
+  <th bgcolor="#BDD7EE">Non-Red Handled</th>
+  <th bgcolor="#BDD7EE">EOD Non-Red</th>
+  <th bgcolor="#8EA9DB">Total Handled</th>
+  <th bgcolor="#F8CBAD">Incoming</th>
+  <th bgcolor="#FFFF00">EOD Total</th>
+</tr>
+</thead>
+  <tbody>
+<tr>
+  <th bgcolor="#FFE599">ETM</th>
+  <th id="SOD_Total1" bgcolor="#A9D08E"></th>
+  <th id="SODRedOrange1" bgcolor="#FFC000"></th>
+  <th id="RedOrange_Handled1" bgcolor="#FFC000"></th>
+  <th id="EODRedOrange" bgcolor="#FFC000"></th>
+  <th id="SODNonRed1" bgcolor="#BDD7EE"></th>
+  <th id="NonRedHandled1" bgcolor="#BDD7EE"></th>
+  <th id="EODNonRed" bgcolor="#BDD7EE"></th>
+  <th id="Total_Handled" bgcolor="#8EA9DB"></th>
+  <th id="Incoming" bgcolor="#F8CBAD"></th>
+  <th id="EOD_Total1"  bgcolor="#FFFF00" ></th>
+</tr>
+  </tbody>
+  <tbody>
+<tr>
+  <th bgcolor="#FFE599">Snow</th>
+  <th id="SOD_Total2" bgcolor="#A9D08E"></th>
+  <th id="SODRedOrange2" bgcolor="#FFC000"></th>
+  <th id="RedOrange_Handled2" bgcolor="#FFC000"></th>
+  <th id="EODRedOrange1" bgcolor="#FFC000"></th>
+  <th id="SODNonRed2" bgcolor="#BDD7EE"></th>
+  <th id="NonRedHandled2" bgcolor="#BDD7EE"></th>
+  <th id="EODNonRed1" bgcolor="#BDD7EE"></th>
+  <th id="Total_Handled1" bgcolor="#8EA9DB"></th>
+  <th id="Incoming1" bgcolor="#F8CBAD"></th>
+  <th id="EOD_Total2" bgcolor="#FFFF00"></th>
+</tr>
+ </tbody>
+ <tbody>
+<tr>
+  <th bgcolor="#FFE599">Total</th>
+  <th id="SOD_Total3" bgcolor="#A9D08E"></th>
+  <th id="SODRedOrange3"bgcolor="#FFC000"></th>
+  <th id="RedOrange_Handled3"bgcolor="#FFC000"></th>
+  <th id="EODRedOrange3" bgcolor="#FFC000"></th>
+  <th id="SODNonRed3" bgcolor="#BDD7EE"></th>
+  <th id="NonRedHandled3" bgcolor="#BDD7EE"></th>
+  <th id="EODNonRed3" bgcolor="#BDD7EE"></th>
+  <th id="Total_Handled3" bgcolor="#8EA9DB"></th>
+  <th id="Incoming3" bgcolor="#F8CBAD"></th>
+  <th id="EOD_Total3"  bgcolor="#FFFF00" ></th>
+</tr>
+</tbody>
+</table>
+<br>
+<input type="button" id="btn" value="select table" onclick="selectElementContents( document.getElementById('tableId') );">
+<br><br>
+<a href="#" onclick="TriggerOutlook()">Create Mail</a>
+<hr>
+<center><p id="tab1">Sangamesh Kumbar</p>
+<hr>
+</body>
+</html>
