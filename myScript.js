@@ -68,7 +68,7 @@ function TriggerOutlook()
 	var b = d.toString().substring(4,7);
 	var c = d.toString().substring(10,15);
     var subject = "Rogers OMS EOD Update || offshore || "+a+"th "+b+" "+c;
-	window.location.href = "mailto:*SmartOps Rogers OMS OGS Team <SmartOpsRogersOMSOGSTeam@int.amdocs.com>; #RCI_Maestro_OMS_OGS <MaestroOMSOGS@rci.rogers.com>?cc=Girija Shankar Samantaray <girijas@amdocs.com>; Tatyana Satanovsky <Tatyana.Satanovsky@Amdocs.com>; Srikrishna Chytanya Nallapati <SNALLAPA@amdocs.com>; Kultar Jarial <KULTARJ@amdocs.com>&subject="+subject;  
+	window.location.href = "mailto:*<email id's> &subject="+subject;  
 } 
 
 function selectElementContents(el) {
